@@ -3,7 +3,25 @@ import { REACTIONS } from "../../config/users";
 import { useApp } from "../../context/AppContext";
 
 const ANGRY_GIF = "https://media.tenor.com/gTC7dFgceip/angry.gif";
-const CONGRATS_GIF = "https://media.tenor.com/qfunVGTp022.gif";
+const CONGRATS_GIF = "https://tenor.com/embed/13500890569322376370";
+
+function GifDisplay({ src, style = {} }) {
+  if (!src) return null;
+  if (src.startsWith("https://tenor.com/embed/")) {
+    return (
+      <div style={{ position: "relative", overflow: "hidden", borderRadius: 6, ...style }}>
+        <iframe
+          src={src}
+          style={{ width: "100%", height: "100%", border: "none", display: "block", pointerEvents: "none" }}
+          scrolling="no"
+          frameBorder="0"
+          allowFullScreen
+        />
+      </div>
+    );
+  }
+  return <img src={src} alt="gif" style={{ borderRadius: 6, display: "block", ...style }} />;
+}
 
 const MEME_PLACEHOLDERS = [
   { emoji: "😂", label: "GIF incoming" },
@@ -161,11 +179,7 @@ export default function PlayerCard({ player, emoji, gif, isExpanded, onToggle, o
               {recentMemes.map(meme => (
                 <div key={meme.id} className="meme-card" style={{ alignItems: "flex-start" }}>
                   {meme.gif ? (
-                    <img
-                      src={meme.gif}
-                      alt="reaction gif"
-                      style={{ width: 80, borderRadius: 6, flexShrink: 0, display: "block" }}
-                    />
+                    <GifDisplay src={meme.gif} style={{ width: 80, height: 80, flexShrink: 0 }} />
                   ) : (
                     <div className="meme-thumb">{meme.emoji}</div>
                   )}

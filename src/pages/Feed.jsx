@@ -59,11 +59,23 @@ export default function Feed() {
                   <div style={{ fontSize: "0.65rem", color: "var(--text3)" }}>{timeAgo(entry.timestamp)}</div>
                 </div>
               </div>
-              <img
-                src={entry.gifUrl}
-                alt={entry.type}
-                style={{ width: "100%", borderRadius: "var(--radius-sm)", display: "block", maxHeight: 220, objectFit: "cover" }}
-              />
+              {entry.gifUrl?.startsWith("https://tenor.com/embed/") ? (
+                <div style={{ borderRadius: "var(--radius-sm)", overflow: "hidden", height: 220 }}>
+                  <iframe
+                    src={entry.gifUrl}
+                    style={{ width: "100%", height: "100%", border: "none", display: "block", pointerEvents: "none" }}
+                    scrolling="no"
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <img
+                  src={entry.gifUrl}
+                  alt={entry.type}
+                  style={{ width: "100%", borderRadius: "var(--radius-sm)", display: "block", maxHeight: 220, objectFit: "cover" }}
+                />
+              )}
             </div>
           ))}
         </div>
