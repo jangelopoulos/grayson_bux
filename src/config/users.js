@@ -1,14 +1,10 @@
 export const USERS = [
-  { username: "grayson", password: "bucks2025", role: "admin", displayName: "Grayson", emoji: "🎉" },
-  { username: "admin", password: "admin123", role: "admin", displayName: "Admin", emoji: "👑" },
-  { username: "jake", password: "jake123", role: "player", displayName: "Jake", emoji: "🍺" },
-  { username: "liam", password: "liam123", role: "player", displayName: "Liam", emoji: "🎳" },
-  { username: "noah", password: "noah123", role: "player", displayName: "Noah", emoji: "🏓" },
-  { username: "oliver", password: "oliver123", role: "player", displayName: "Oliver", emoji: "🍔" },
-  { username: "william", password: "will123", role: "player", displayName: "William", emoji: "🔥" },
-  { username: "james", password: "james123", role: "player", displayName: "James", emoji: "💀" },
-  { username: "ben", password: "ben123", role: "player", displayName: "Ben", emoji: "🤡" },
-  { username: "sam", password: "sam123", role: "player", displayName: "Sam", emoji: "🐐" },
+  { username: "grayson", password: "grayson2026", role: "admin", displayName: "Grayson", emoji: "🎉" },
+  { username: "spiros", password: "spiros2026", role: "player", displayName: "Spiros", emoji: "🔥" },
+  { username: "john", password: "john2026", role: "player", displayName: "John", emoji: "🍺" },
+  { username: "george", password: "george2026", role: "player", displayName: "George", emoji: "🎳" },
+  { username: "nick", password: "nick2026", role: "player", displayName: "Nick", emoji: "🏓" },
+  { username: "giorgio", password: "giorgio2026", role: "player", displayName: "Giorgio", emoji: "🐐" },
 ];
 
 export const ACTIVITIES = [
