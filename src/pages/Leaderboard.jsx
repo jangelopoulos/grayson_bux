@@ -3,9 +3,20 @@ import { useApp } from "../context/AppContext";
 import { USERS } from "../config/users";
 import PlayerCard from "../components/cards/PlayerCard";
 
-function getEmoji(name) {
-  const user = USERS.find(u => u.displayName === name);
-  return user?.emoji || "🤙";
+function getUser(name) {
+  return USERS.find(u => u.displayName === name) || {};
+}
+
+function Avatar({ name, size = 32 }) {
+  const user = getUser(name);
+  return (
+    <div style={{ width: size, height: size, borderRadius: "50%", overflow: "hidden", background: "var(--bg4)", border: "2px solid var(--border2)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {user.gif
+        ? <img src={user.gif} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        : <span style={{ fontSize: size * 0.45 }}>{user.emoji || "🤙"}</span>
+      }
+    </div>
+  );
 }
 
 const RANK_ICONS = ["👑", "🥈", "🥉"];
@@ -97,9 +108,7 @@ export default function Leaderboard() {
               {idx === 0 && hasAnyScore ? "👑" : idx < 3 && hasAnyScore ? RANK_ICONS[idx] : <span style={{ color: "var(--text3)", fontSize: "0.9rem" }}>#{idx + 1}</span>}
               {idx === leaderboard.length - 1 && leaderboard.length > 1 && hasAnyScore ? "💀" : null}
             </div>
-            <div className="player-avatar" style={{ width: 32, height: 32, fontSize: "1rem" }}>
-              {getEmoji(player.name)}
-            </div>
+            <Avatar name={player.name} size={32} />
             <div className="lb-name">
               <div>{player.name}</div>
               <div className="score-strip">
@@ -127,7 +136,8 @@ export default function Leaderboard() {
           <PlayerCard
             key={player.name}
             player={player}
-            emoji={getEmoji(player.name)}
+            emoji={getUser(player.name).emoji || "🤙"}
+            gif={getUser(player.name).gif}
             isExpanded={expandedPlayer === player.name}
             onToggle={() => setExpandedPlayer(expandedPlayer === player.name ? null : player.name)}
             onReact={(reaction) => sendReaction(player.name, reaction)}

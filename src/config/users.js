@@ -1,10 +1,10 @@
 export const USERS = [
-  { username: "grayson", password: "grayson2026", role: "player", displayName: "Grayson", emoji: "🎉" },
-  { username: "spiros", password: "spiros2026", role: "player", displayName: "Spiros", emoji: "🔥" },
-  { username: "john", password: "john2026", role: "admin", displayName: "John", emoji: "🍺" },
-  { username: "george", password: "george2026", role: "player", displayName: "George", emoji: "🎳" },
-  { username: "nick", password: "nick2026", role: "player", displayName: "Nick", emoji: "🏓" },
-  { username: "giorgio", password: "giorgio2026", role: "player", displayName: "Giorgio", emoji: "🐐" },
+  { username: "grayson", password: "grayson2026", role: "player",  displayName: "Grayson", emoji: "🎉", gif: "https://media.tenor.com/sWiDLuqQadw.gif" },
+  { username: "spiros",  password: "spiros2026",  role: "player",  displayName: "Spiros",  emoji: "🔥", gif: "https://media.tenor.com/tvzSFt1j4Gz.gif" },
+  { username: "john",    password: "john2026",    role: "admin",   displayName: "John",    emoji: "🍺", gif: "https://media.tenor.com/ibnFrq3rOX4.gif" },
+  { username: "george",  password: "george2026",  role: "player",  displayName: "George",  emoji: "🎳", gif: "https://media.tenor.com/bUmD4SfSGHC.gif" },
+  { username: "nick",    password: "nick2026",    role: "player",  displayName: "Nick",    emoji: "🏓", gif: "https://media.tenor.com/f0w0z1sBTdf.gif" },
+  { username: "giorgio", password: "giorgio2026", role: "player",  displayName: "Giorgio", emoji: "🐐", gif: "https://media.tenor.com/bYCWT.gif" },
 ];
 
 export const ACTIVITIES = [
