@@ -5,6 +5,7 @@ const NAV_ITEMS = [
   { to: "/itinerary", emoji: "📋", label: "Plan" },
   { to: "/groups", emoji: "👥", label: "Groups" },
   { to: "/leaderboard", emoji: "🏆", label: "Table" },
+  { to: "/feed", emoji: "🎞️", label: "Feed" },
   { to: "/admin", emoji: "🔐", label: "Admin", adminOnly: true },
 ];
 

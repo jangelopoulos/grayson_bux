@@ -22,6 +22,7 @@ export function AppProvider({ children }) {
   const [groups, setGroups] = useState(() => loadState("bucks_groups", []));
   const [scores, setScores] = useState(() => loadState("bucks_scores", {}));
   const [reactionLog, setReactionLog] = useState(() => loadState("bucks_reactions", []));
+  const [gifLog, setGifLog] = useState(() => loadState("bucks_giflog", []));
   const [activeActivity, setActiveActivityState] = useState(() => loadState("bucks_activeActivity", "burgers"));
 
   useEffect(() => { saveState("bucks_auth", auth); }, [auth]);
@@ -29,6 +30,7 @@ export function AppProvider({ children }) {
   useEffect(() => { saveState("bucks_groups", groups); }, [groups]);
   useEffect(() => { saveState("bucks_scores", scores); }, [scores]);
   useEffect(() => { saveState("bucks_reactions", reactionLog); }, [reactionLog]);
+  useEffect(() => { saveState("bucks_giflog", gifLog); }, [gifLog]);
   useEffect(() => { saveState("bucks_activeActivity", activeActivity); }, [activeActivity]);
 
   const login = useCallback((username, password) => {
@@ -85,6 +87,22 @@ export function AppProvider({ children }) {
     ]);
   }, [auth]);
 
+  const sendGif = useCallback((targetPlayer, type, gifUrl) => {
+    if (!auth) return;
+    setGifLog(prev => [
+      ...prev,
+      {
+        id: Date.now() + Math.random(),
+        sender: auth.displayName || auth.username,
+        senderEmoji: auth.emoji || "👤",
+        target: targetPlayer,
+        type, // 'congrats' | 'angry'
+        gifUrl,
+        timestamp: new Date().toISOString(),
+      },
+    ]);
+  }, [auth]);
+
   const setActiveActivity = useCallback((activityId) => {
     setActiveActivityState(activityId);
   }, []);
@@ -95,11 +113,13 @@ export function AppProvider({ children }) {
 
   const resetReactions = useCallback(() => {
     setReactionLog([]);
+    setGifLog([]);
   }, []);
 
   const resetAll = useCallback(() => {
     setScores({});
     setReactionLog([]);
+    setGifLog([]);
     setGroups([]);
     setDaySetup({ complete: false, attendeeNames: [] });
     setActiveActivityState("burgers");
@@ -152,6 +172,8 @@ export function AppProvider({ children }) {
       submitScore,
       reactionLog,
       sendReaction,
+      gifLog,
+      sendGif,
       activeActivity,
       setActiveActivity,
       leaderboard,

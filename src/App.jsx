@@ -10,6 +10,7 @@ import Leaderboard from "./pages/Leaderboard";
 import ActivityScoring from "./pages/ActivityScoring";
 import Admin from "./pages/Admin";
 import Setup from "./pages/Setup";
+import Feed from "./pages/Feed";
 
 export default function App() {
   return (
@@ -37,6 +38,11 @@ export default function App() {
           <Route path="/activity/:name" element={
             <ProtectedRoute>
               <Layout><ActivityScoring /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/feed" element={
+            <ProtectedRoute>
+              <Layout><Feed /></Layout>
             </ProtectedRoute>
           } />
           <Route path="/admin" element={

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { REACTIONS } from "../../config/users";
+import { useApp } from "../../context/AppContext";
 
 const ANGRY_GIF = "https://media.tenor.com/gTC7dFgceip/angry.gif";
 const CONGRATS_GIF = "https://media.tenor.com/qfunVGTp022.gif";
@@ -18,6 +19,7 @@ function getMeme() {
 }
 
 export default function PlayerCard({ player, emoji, isExpanded, onToggle, onReact, canReact, rank, isLast }) {
+  const { sendGif } = useApp();
   const [recentMemes, setRecentMemes] = useState([]);
   const [justSent, setJustSent] = useState(null);
   const [quickSent, setQuickSent] = useState(null); // 'congrats' | 'angry'
@@ -36,8 +38,10 @@ export default function PlayerCard({ player, emoji, isExpanded, onToggle, onReac
     setQuickSent(type);
     if (type === "angry") {
       setRecentMemes(prev => [{ gif: ANGRY_GIF, label: "Angry GIF", type: "angry", id: Date.now() }, ...prev].slice(0, 3));
+      sendGif(player.name, "angry", ANGRY_GIF);
     } else {
       setRecentMemes(prev => [{ gif: CONGRATS_GIF, label: "Congrats!", type: "congrats", id: Date.now() }, ...prev].slice(0, 3));
+      sendGif(player.name, "congrats", CONGRATS_GIF);
     }
     // auto-expand to show the GIF
     if (!isExpanded) onToggle();
