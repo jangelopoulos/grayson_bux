@@ -2,6 +2,7 @@ import { useState } from "react";
 import { REACTIONS } from "../../config/users";
 
 const ANGRY_GIF = "https://media.tenor.com/gTC7dFgceip/angry.gif";
+const CONGRATS_GIF = "https://media.tenor.com/qfunVGTp022.gif";
 
 const MEME_PLACEHOLDERS = [
   { emoji: "😂", label: "GIF incoming" },
@@ -36,7 +37,7 @@ export default function PlayerCard({ player, emoji, isExpanded, onToggle, onReac
     if (type === "angry") {
       setRecentMemes(prev => [{ gif: ANGRY_GIF, label: "Angry GIF", type: "angry", id: Date.now() }, ...prev].slice(0, 3));
     } else {
-      setRecentMemes(prev => [{ emoji: "🎉", label: "Congrats!", type: "congrats", id: Date.now() }, ...prev].slice(0, 3));
+      setRecentMemes(prev => [{ gif: CONGRATS_GIF, label: "Congrats!", type: "congrats", id: Date.now() }, ...prev].slice(0, 3));
     }
     // auto-expand to show the GIF
     if (!isExpanded) onToggle();
