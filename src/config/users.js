@@ -4,7 +4,7 @@ export const USERS = [
   { username: "john",    password: "john2026",    role: "admin",   displayName: "John",    emoji: "🍺", tenorId: "6730880585997418590" },
   { username: "george",  password: "george2026",  role: "player",  displayName: "George",  emoji: "🎳", tenorId: "1464730776294592906" },
   { username: "nick",    password: "nick2026",    role: "player",  displayName: "Nick",    emoji: "🏓", tenorId: "4905413404863308123" },
-  { username: "giorgio", password: "giorgio2026", role: "player",  displayName: "Giorgio", emoji: "🐐", gif: "https://media.tenor.com/bYCWT.gif" },
+  { username: "giorgio", password: "giorgio2026", role: "player",  displayName: "Giorgio", emoji: "🐐", tenorId: "25382966" },
 ];
 
 export const ACTIVITIES = [
