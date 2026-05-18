@@ -1,7 +1,7 @@
 export const USERS = [
   { username: "grayson", password: "grayson2026", role: "admin", displayName: "Grayson", emoji: "🎉" },
   { username: "spiros", password: "spiros2026", role: "player", displayName: "Spiros", emoji: "🔥" },
-  { username: "john", password: "john2026", role: "player", displayName: "John", emoji: "🍺" },
+  { username: "john", password: "john2026", role: "admin", displayName: "John", emoji: "🍺" },
   { username: "george", password: "george2026", role: "player", displayName: "George", emoji: "🎳" },
   { username: "nick", password: "nick2026", role: "player", displayName: "Nick", emoji: "🏓" },
   { username: "giorgio", password: "giorgio2026", role: "player", displayName: "Giorgio", emoji: "🐐" },
