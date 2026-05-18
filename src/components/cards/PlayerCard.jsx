@@ -2,7 +2,7 @@ import { useState } from "react";
 import { REACTIONS } from "../../config/users";
 import { useApp } from "../../context/AppContext";
 
-const ANGRY_GIF = "https://media.tenor.com/gTC7dFgceip/angry.gif";
+const ANGRY_GIF = "https://tenor.com/embed/7058302348984723881";
 const CONGRATS_GIF = "https://tenor.com/embed/13500890569322376370";
 
 function GifDisplay({ src, style = {} }) {

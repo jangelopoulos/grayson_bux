@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { USERS } from "../config/users";
 
-const ANGRY_GIF = "https://media.tenor.com/gTC7dFgceip/angry.gif";
+const ANGRY_GIF = "https://tenor.com/embed/7058302348984723881";
 const CONGRATS_GIF = "https://media.tenor.com/qfunVGTp022.gif";
 
 function getUser(name) {
