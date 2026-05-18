@@ -50,10 +50,9 @@ function Q1({ onNext }) {
 
       {result === "correct" && (
         <div style={{ textAlign: "center", marginBottom: 20 }}>
-          <div style={{ fontSize: "2.5rem", marginBottom: 6 }}>🏛️</div>
+          <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyMmZheHpzY2ZubXFqZXJrbjA3b3h1MW5rMnI2a3U5ZHhmdWNmdTMxOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1SfxXOJ0Q2Xni/giphy.gif" alt="you better believe it" style={{ width: "100%", borderRadius: "var(--radius)", marginBottom: 12 }} />
           <div style={{ fontWeight: 900, fontSize: "1.2rem", color: "var(--green)", marginBottom: 4 }}>You better believe it.</div>
-          <div style={{ fontSize: "0.85rem", color: "var(--text2)" }}>Democracy, philosophy, the Olympics, baklava — all Greeks.</div>
-          <button className="btn btn-primary btn-full" style={{ marginTop: 16 }} onClick={onNext}>Next →</button>
+          <button className="btn btn-primary btn-full" style={{ marginTop: 12 }} onClick={onNext}>Next →</button>
         </div>
       )}
 
