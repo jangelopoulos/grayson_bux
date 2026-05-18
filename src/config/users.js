@@ -8,9 +8,9 @@ export const USERS = [
 ];
 
 export const ACTIVITIES = [
-  { id: "burgers", label: "Burgers", emoji: "🍔", scoreLabel: "Vibe Score", scoreMax: 10, scoreUnit: "/10", description: "Who smashed the most convincing burger face?" },
-  { id: "bowling", label: "Bowling", emoji: "🎳", scoreLabel: "Score", scoreMax: 300, scoreUnit: "pts", description: "Who actually knows how to bowl? (nobody)" },
-  { id: "padel", label: "Padel", emoji: "🏓", scoreLabel: "Games Won", scoreMax: 10, scoreUnit: "wins", description: "Pretend tennis for people who can't play tennis." },
+  { id: "burgers", label: "Burgers", emoji: "🍔", time: "12:30pm", venue: "Leonard's House of Love", scoreLabel: "Vibe Score", scoreMax: 10, scoreUnit: "/10", description: "Who smashed the most convincing burger face?" },
+  { id: "bowling", label: "Bowling", emoji: "🎳", time: "2:30pm", venue: "Kingpin, Crown", scoreLabel: "Score", scoreMax: 300, scoreUnit: "pts", description: "Who actually knows how to bowl? (nobody)" },
+  { id: "padel", label: "Padel", emoji: "🏓", time: "4:30–6pm", venue: "Docklands", scoreLabel: "Games Won", scoreMax: 10, scoreUnit: "wins", description: "Pretend tennis for people who can't play tennis." },
 ];
 
 export const REACTIONS = [

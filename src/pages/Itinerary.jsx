@@ -78,7 +78,12 @@ export default function Itinerary() {
                     {isActive && <span className="badge badge-purple">NOW</span>}
                     {done && !isActive && <span className="badge badge-green">DONE</span>}
                   </div>
-                  <p style={{ fontSize: "0.8rem", color: "var(--text2)", marginBottom: 10 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+                    <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--accent2)" }}>{activity.time}</span>
+                    <span style={{ color: "var(--text3)", fontSize: "0.75rem" }}>·</span>
+                    <span style={{ fontSize: "0.82rem", color: "var(--text2)", fontWeight: 600 }}>{activity.venue}</span>
+                  </div>
+                  <p style={{ fontSize: "0.78rem", color: "var(--text3)", marginBottom: 10 }}>
                     {done ? getRoast(activity.id) : activity.description}
                   </p>
                   <div style={{ display: "flex", gap: 8 }}>
