@@ -2,7 +2,7 @@ export const USERS = [
   { username: "grayson", password: "grayson2026", role: "player",  displayName: "Grayson", emoji: "🎉", tenorId: "15759019707696838336" },
   { username: "spiros",  password: "spiros2026",  role: "player",  displayName: "Spiros",  emoji: "🔥", gif: "https://media.tenor.com/tvzSFt1j4Gz.gif" },
   { username: "john",    password: "john2026",    role: "admin",   displayName: "John",    emoji: "🍺", gif: "https://media.tenor.com/ibnFrq3rOX4.gif" },
-  { username: "george",  password: "george2026",  role: "player",  displayName: "George",  emoji: "🎳", gif: "https://media.tenor.com/bUmD4SfSGHC.gif" },
+  { username: "george",  password: "george2026",  role: "player",  displayName: "George",  emoji: "🎳", tenorId: "1464730776294592906" },
   { username: "nick",    password: "nick2026",    role: "player",  displayName: "Nick",    emoji: "🏓", tenorId: "4905413404863308123" },
   { username: "giorgio", password: "giorgio2026", role: "player",  displayName: "Giorgio", emoji: "🐐", gif: "https://media.tenor.com/bYCWT.gif" },
 ];
