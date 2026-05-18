@@ -20,7 +20,7 @@ export default function Itinerary() {
     return (
       <div className="page fade-up">
         <div className="page-header">
-          <h1>The Itinerary 📋</h1>
+          <h1>Grayson's Bucks Day 🍾</h1>
           <p>Day hasn't been set up yet. Admin needs to get their act together.</p>
         </div>
         <div className="card-lg text-center" style={{ padding: 40 }}>
@@ -52,8 +52,54 @@ export default function Itinerary() {
   return (
     <div className="page fade-up">
       <div className="page-header">
-        <h1>The Plan 📋</h1>
-        <p>Burgers → Bowling → Padel. Don't mess it up.</p>
+        <h1>Grayson's Bucks Day 🍾</h1>
+        <p>Survive the day. Earn the bragging rights.</p>
+      </div>
+
+      {/* Hero itinerary card */}
+      <div style={{
+        background: "linear-gradient(135deg, rgba(108,71,255,0.15) 0%, rgba(245,0,87,0.08) 100%)",
+        border: "1.5px solid rgba(108,71,255,0.3)",
+        borderRadius: "var(--radius-lg)",
+        padding: "20px",
+        marginBottom: 20,
+      }}>
+        <div style={{ fontSize: "0.72rem", fontWeight: 700, color: "var(--accent2)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 16 }}>
+          Saturday's plan
+        </div>
+        {[
+          { time: "12:30pm", emoji: "🍔", title: "Burgers", venue: "Leonard's House of Love", note: "Vegan friendly option TBC — someone's problem to sort" },
+          { time: "2:30pm",  emoji: "🎳", title: "Bowling", venue: "Kingpin, Crown", note: null },
+          { time: "4:30–6pm", emoji: "🏓", title: "Padel", venue: "Docklands", note: null },
+        ].map((item, idx, arr) => (
+          <div key={item.time} style={{ display: "flex", gap: 14, position: "relative", paddingBottom: idx < arr.length - 1 ? 20 : 0 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
+              <div style={{
+                width: 40, height: 40, borderRadius: "50%",
+                background: "rgba(108,71,255,0.18)",
+                border: "2px solid rgba(108,71,255,0.4)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "1.1rem",
+              }}>
+                {item.emoji}
+              </div>
+              {idx < arr.length - 1 && (
+                <div style={{ width: 2, flex: 1, background: "rgba(108,71,255,0.2)", margin: "4px 0", minHeight: 16 }} />
+              )}
+            </div>
+            <div>
+              <div style={{ fontWeight: 900, fontSize: "1.05rem", lineHeight: 1.1 }}>{item.title}</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, margin: "4px 0" }}>
+                <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--accent2)" }}>{item.time}</span>
+                <span style={{ color: "var(--text3)", fontSize: "0.7rem" }}>·</span>
+                <span style={{ fontSize: "0.82rem", color: "var(--text2)", fontWeight: 600 }}>{item.venue}</span>
+              </div>
+              {item.note && (
+                <div style={{ fontSize: "0.72rem", color: "var(--text3)", fontStyle: "italic" }}>{item.note}</div>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="card-lg" style={{ marginBottom: 20 }}>
