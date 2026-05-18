@@ -14,7 +14,8 @@ export default function Login() {
     e.preventDefault();
     const ok = login(username.trim().toLowerCase(), password);
     if (ok) {
-      navigate("/itinerary");
+      sessionStorage.removeItem("bucks_quiz_done");
+      navigate("/quiz");
     } else {
       setError("Wrong username or password, genius.");
       setShaking(true);

@@ -3,6 +3,7 @@ import { AppProvider } from "./context/AppContext";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
+import QuizGate from "./pages/QuizGate";
 import Itinerary from "./pages/Itinerary";
 import Groups from "./pages/Groups";
 import Leaderboard from "./pages/Leaderboard";
@@ -16,6 +17,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/quiz" element={<ProtectedRoute><QuizGate /></ProtectedRoute>} />
           <Route path="/" element={<Navigate to="/itinerary" replace />} />
           <Route path="/itinerary" element={
             <ProtectedRoute>
