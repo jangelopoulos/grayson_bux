@@ -233,32 +233,21 @@ function Q3({ onComplete }) {
               flex: 1,
               borderRadius: "var(--radius-lg)",
               border: `2.5px solid ${selected === opt.id ? "var(--accent)" : "var(--border)"}`,
-              background: selected === opt.id ? "rgba(108,71,255,0.1)" : "var(--bg3)",
-              padding: 0,
-              overflow: "hidden",
+              background: selected === opt.id ? "rgba(108,71,255,0.12)" : "var(--bg3)",
+              padding: "32px 16px",
               cursor: "pointer",
               transition: "all 0.15s",
               boxShadow: selected === opt.id ? "0 0 20px var(--accent-glow)" : "none",
-            }}
-          >
-            {/* Photo area — replace the div below with an <img> when you have photos */}
-            <div style={{
-              width: "100%",
-              aspectRatio: "3/4",
-              background: "var(--bg4)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
-              gap: 6,
-              borderBottom: `1px solid ${selected === opt.id ? "var(--accent)" : "var(--border)"}`,
-            }}>
-              <span style={{ fontSize: "3.5rem" }}>{opt.emoji}</span>
-              <span style={{ fontSize: "0.65rem", color: "var(--text3)" }}>[ photo here ]</span>
-            </div>
-            <div style={{ padding: "10px 0", fontWeight: 800, fontSize: "1rem", color: selected === opt.id ? "var(--accent2)" : "var(--text)" }}>
+              gap: 12,
+            }}
+          >
+            <span style={{ fontSize: "3rem" }}>{opt.emoji}</span>
+            <span style={{ fontWeight: 900, fontSize: "1.2rem", color: selected === opt.id ? "var(--accent2)" : "var(--text)" }}>
               {opt.label}
-            </div>
+            </span>
           </button>
         ))}
       </div>
