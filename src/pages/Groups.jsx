@@ -48,12 +48,21 @@ export default function Groups() {
               className="card-lg"
               style={{ display: "flex", alignItems: "center", gap: 14, padding: "12px 14px" }}
             >
-              {/* Profile GIF / avatar */}
-              <div style={{ width: 64, height: 64, borderRadius: "50%", overflow: "hidden", border: "2px solid var(--border2)", flexShrink: 0, background: "var(--bg4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                {user?.gif
-                  ? <img src={user.gif} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  : <span style={{ fontSize: "1.8rem" }}>{user?.emoji || "🤙"}</span>
-                }
+              {/* Profile avatar */}
+              <div style={{ width: 64, height: 64, borderRadius: "50%", overflow: "hidden", border: "2px solid var(--border2)", flexShrink: 0, background: "var(--bg4)", position: "relative" }}>
+                {user?.tenorId ? (
+                  <iframe
+                    src={`https://tenor.com/embed/${user.tenorId}`}
+                    style={{ position: "absolute", top: "-10%", left: "-10%", width: "120%", height: "120%", border: "none", pointerEvents: "none" }}
+                    scrolling="no"
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                ) : user?.gif ? (
+                  <img src={user.gif} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : (
+                  <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.8rem" }}>{user?.emoji || "🤙"}</div>
+                )}
               </div>
 
               {/* Info */}

@@ -1,5 +1,5 @@
 export const USERS = [
-  { username: "grayson", password: "grayson2026", role: "player",  displayName: "Grayson", emoji: "🎉", gif: "https://media.tenor.com/sWiDLuqQadw.gif" },
+  { username: "grayson", password: "grayson2026", role: "player",  displayName: "Grayson", emoji: "🎉", tenorId: "15759019707696838336" },
   { username: "spiros",  password: "spiros2026",  role: "player",  displayName: "Spiros",  emoji: "🔥", gif: "https://media.tenor.com/tvzSFt1j4Gz.gif" },
   { username: "john",    password: "john2026",    role: "admin",   displayName: "John",    emoji: "🍺", gif: "https://media.tenor.com/ibnFrq3rOX4.gif" },
   { username: "george",  password: "george2026",  role: "player",  displayName: "George",  emoji: "🎳", gif: "https://media.tenor.com/bUmD4SfSGHC.gif" },
