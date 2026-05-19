@@ -6,6 +6,7 @@ export const USERS = [
   { username: "nick",     password: "nick2026",     role: "player",  displayName: "Nick",     emoji: "🏓", tenorId: "4905413404863308123" },
   { username: "giorgio",  password: "giorgio2026",  role: "player",  displayName: "Giorgio",  emoji: "🐐", tenorId: "25382966" },
   { username: "giorgiok", password: "giorgiok2026", role: "player",  displayName: "Giorgio K", emoji: "🦁", avatar: "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUycjk1MXd1aHU1eDNqdmpzMDV5aXM0YWFiN2JhaGV3dWpuazl2bGQ3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IfPE0x5gfa5ctKpph6/giphy.gif" },
+  { username: "arthur",   password: "arthur2026",   role: "player",  displayName: "Arthur",    emoji: "🎸", avatar: "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyd3ZweWo4b2R6ZzF5YnZwaHl1cmlkcXc0eHk2YTFqaHAydGUwNmxmdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3vQZhxc1ybSlGQ4U/giphy.gif" },
 ];
 
 export const ACTIVITIES = [
