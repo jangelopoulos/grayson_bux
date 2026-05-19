@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { USERS } from "../config/users";
+import PlayerAvatar from "../components/cards/PlayerAvatar";
 
 const ANGRY_GIF = "https://tenor.com/embed/7058302348984723881";
 const CONGRATS_GIF = "https://tenor.com/embed/13500890569322376370";
@@ -112,22 +113,7 @@ export default function Groups() {
               className="card-lg"
               style={{ display: "flex", alignItems: "center", gap: 14, padding: "12px 14px" }}
             >
-              {/* Profile avatar */}
-              <div style={{ width: 64, height: 64, borderRadius: "50%", overflow: "hidden", border: "2px solid var(--border2)", flexShrink: 0, background: "var(--bg4)", position: "relative" }}>
-                {user?.tenorId ? (
-                  <iframe
-                    src={`https://tenor.com/embed/${user.tenorId}`}
-                    style={{ position: "absolute", top: "-10%", left: "-10%", width: "120%", height: "120%", border: "none", pointerEvents: "none" }}
-                    scrolling="no"
-                    frameBorder="0"
-                    allowFullScreen
-                  />
-                ) : user?.gif ? (
-                  <img src={user.gif} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                ) : (
-                  <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.8rem" }}>{user?.emoji || "🤙"}</div>
-                )}
-              </div>
+              <PlayerAvatar name={name} size={64} />
 
               {/* Info */}
               <div style={{ flex: 1, minWidth: 0 }}>

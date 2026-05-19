@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { REACTIONS } from "../../config/users";
 import { useApp } from "../../context/AppContext";
+import PlayerAvatar from "./PlayerAvatar";
 
 const ANGRY_GIF = "https://tenor.com/embed/7058302348984723881";
 const CONGRATS_GIF = "https://tenor.com/embed/13500890569322376370";
@@ -36,7 +37,7 @@ function getMeme() {
   return MEME_PLACEHOLDERS[Math.floor(Math.random() * MEME_PLACEHOLDERS.length)];
 }
 
-export default function PlayerCard({ player, emoji, gif, isExpanded, onToggle, onReact, canReact, rank, isLast }) {
+export default function PlayerCard({ player, isExpanded, onToggle, onReact, canReact, rank, isLast }) {
   const { sendGif } = useApp();
   const [recentMemes, setRecentMemes] = useState([]);
   const [justSent, setJustSent] = useState(null);
@@ -77,12 +78,7 @@ export default function PlayerCard({ player, emoji, gif, isExpanded, onToggle, o
       {/* Header */}
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <div style={{ position: "relative", flexShrink: 0 }}>
-          <div style={{ width: 44, height: 44, borderRadius: "50%", overflow: "hidden", background: "var(--bg4)", border: "2px solid var(--border2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            {gif
-              ? <img src={gif} alt={player.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-              : <span style={{ fontSize: "1.4rem" }}>{emoji}</span>
-            }
-          </div>
+          <PlayerAvatar name={player.name} size={44} />
           {rank === 1 && player.total > 0 && (
             <span style={{ position: "absolute", top: -8, right: -8, fontSize: "0.9rem" }}>👑</span>
           )}
