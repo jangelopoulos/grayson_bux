@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { USERS } from "../config/users";
 import PlayerAvatar from "../components/cards/PlayerAvatar";
-import { randomAngryGif, CONGRATS_GIF } from "../config/gifs";
+import { randomAngryGif, randomCongratsGif } from "../config/gifs";
 
 function getUser(name) {
   return USERS.find(u => u.displayName === name);
@@ -74,7 +74,7 @@ export default function Groups() {
 
   function handleGif(name, type) {
     if (!canReact || auth.displayName === name) return;
-    const gifUrl = type === "angry" ? randomAngryGif() : CONGRATS_GIF;
+    const gifUrl = type === "angry" ? randomAngryGif() : randomCongratsGif();
     sendGif(name, type, gifUrl);
     setJustSent(prev => ({ ...prev, [name]: type }));
     setTimeout(() => setJustSent(prev => ({ ...prev, [name]: null })), 2000);

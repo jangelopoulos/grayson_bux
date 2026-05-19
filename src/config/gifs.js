@@ -6,8 +6,17 @@ export const ANGRY_GIFS = [
   "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUycmxnMWllYTl3dHpmempueXRmdGVzcG50NHRianJrbW9pdXZ0Y2l5bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SNEudVcprbwOk6Nkp2/giphy.gif",
 ];
 
-export const CONGRATS_GIF = "https://tenor.com/embed/13500890569322376370";
+export const CONGRATS_GIFS = [
+  "https://tenor.com/embed/13500890569322376370",
+  "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyMTNidWJvbTF4YzQ0ZjdrcjZ0eXZqeTQ3OGtnZDBvZnZpZTJlaDF4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9RCRdAwP9XwcqjPvDH/giphy.gif",
+  "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUybjVmM29iMjl0c3B2eXJ1MGlhNTRuY3hiZnE0dWpzNmpocTVyMzJ5ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XDaLiUu8VyreM/giphy.gif",
+  "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyYWhub3Jjamdhc2FmY3p4OTI1eTltdHQ4cTRraXd6MTc0NGxjY3p5byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FbiL9rsmZN3ib2JSGo/giphy.gif",
+];
 
 export function randomAngryGif() {
   return ANGRY_GIFS[Math.floor(Math.random() * ANGRY_GIFS.length)];
+}
+
+export function randomCongratsGif() {
+  return CONGRATS_GIFS[Math.floor(Math.random() * CONGRATS_GIFS.length)];
 }

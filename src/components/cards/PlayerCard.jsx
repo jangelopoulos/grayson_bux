@@ -3,7 +3,7 @@ import { REACTIONS } from "../../config/users";
 import { useApp } from "../../context/AppContext";
 import PlayerAvatar from "./PlayerAvatar";
 
-import { randomAngryGif, CONGRATS_GIF } from "../../config/gifs";
+import { randomAngryGif, randomCongratsGif } from "../../config/gifs";
 
 function GifDisplay({ src, style = {} }) {
   if (!src) return null;
@@ -59,8 +59,9 @@ export default function PlayerCard({ player, isExpanded, onToggle, onReact, canR
       setRecentMemes(prev => [{ gif: angryGif, label: "Angry GIF", type: "angry", id: Date.now() }, ...prev].slice(0, 3));
       sendGif(player.name, "angry", angryGif);
     } else {
-      setRecentMemes(prev => [{ gif: CONGRATS_GIF, label: "Congrats!", type: "congrats", id: Date.now() }, ...prev].slice(0, 3));
-      sendGif(player.name, "congrats", CONGRATS_GIF);
+      const congratsGif = randomCongratsGif();
+      setRecentMemes(prev => [{ gif: congratsGif, label: "Congrats!", type: "congrats", id: Date.now() }, ...prev].slice(0, 3));
+      sendGif(player.name, "congrats", congratsGif);
     }
     // auto-expand to show the GIF
     if (!isExpanded) onToggle();
