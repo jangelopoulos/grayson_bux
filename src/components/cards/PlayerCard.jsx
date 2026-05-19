@@ -3,8 +3,7 @@ import { REACTIONS } from "../../config/users";
 import { useApp } from "../../context/AppContext";
 import PlayerAvatar from "./PlayerAvatar";
 
-const ANGRY_GIF = "https://tenor.com/embed/7058302348984723881";
-const CONGRATS_GIF = "https://tenor.com/embed/13500890569322376370";
+import { randomAngryGif, CONGRATS_GIF } from "../../config/gifs";
 
 function GifDisplay({ src, style = {} }) {
   if (!src) return null;
@@ -56,8 +55,9 @@ export default function PlayerCard({ player, isExpanded, onToggle, onReact, canR
     if (!canReact) return;
     setQuickSent(type);
     if (type === "angry") {
-      setRecentMemes(prev => [{ gif: ANGRY_GIF, label: "Angry GIF", type: "angry", id: Date.now() }, ...prev].slice(0, 3));
-      sendGif(player.name, "angry", ANGRY_GIF);
+      const angryGif = randomAngryGif();
+      setRecentMemes(prev => [{ gif: angryGif, label: "Angry GIF", type: "angry", id: Date.now() }, ...prev].slice(0, 3));
+      sendGif(player.name, "angry", angryGif);
     } else {
       setRecentMemes(prev => [{ gif: CONGRATS_GIF, label: "Congrats!", type: "congrats", id: Date.now() }, ...prev].slice(0, 3));
       sendGif(player.name, "congrats", CONGRATS_GIF);
