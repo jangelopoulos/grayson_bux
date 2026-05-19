@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { USERS, ACTIVITIES } from "../config/users";
-import { supabase } from "../config/supabase";
 
 const AppContext = createContext(null);
 
@@ -23,7 +22,7 @@ export function AppProvider({ children }) {
   const [groups, setGroups] = useState(() => loadState("bucks_groups", []));
   const [scores, setScores] = useState(() => loadState("bucks_scores", {}));
   const [reactionLog, setReactionLog] = useState(() => loadState("bucks_reactions", []));
-  const [gifLog, setGifLog] = useState([]);
+  const [gifLog, setGifLog] = useState(() => loadState("bucks_giflog", []));
   const [activeActivity, setActiveActivityState] = useState(() => loadState("bucks_activeActivity", "burgers"));
 
   useEffect(() => { saveState("bucks_auth", auth); }, [auth]);
@@ -31,45 +30,8 @@ export function AppProvider({ children }) {
   useEffect(() => { saveState("bucks_groups", groups); }, [groups]);
   useEffect(() => { saveState("bucks_scores", scores); }, [scores]);
   useEffect(() => { saveState("bucks_reactions", reactionLog); }, [reactionLog]);
+  useEffect(() => { saveState("bucks_giflog", gifLog); }, [gifLog]);
   useEffect(() => { saveState("bucks_activeActivity", activeActivity); }, [activeActivity]);
-
-  // Load gifLog from Supabase on mount and subscribe to real-time inserts
-  useEffect(() => {
-    supabase
-      .from("bucks_gif_log")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(50)
-      .then(({ data }) => {
-        if (data) setGifLog(data.map(row => ({
-          id: row.id,
-          sender: row.sender,
-          senderEmoji: row.sender_emoji,
-          target: row.target,
-          type: row.type,
-          gifUrl: row.gif_url,
-          timestamp: row.created_at,
-        })));
-      });
-
-    const channel = supabase
-      .channel("bucks_gif_log_changes")
-      .on("postgres_changes", { event: "INSERT", schema: "public", table: "bucks_gif_log" }, payload => {
-        const row = payload.new;
-        setGifLog(prev => [{
-          id: row.id,
-          sender: row.sender,
-          senderEmoji: row.sender_emoji,
-          target: row.target,
-          type: row.type,
-          gifUrl: row.gif_url,
-          timestamp: row.created_at,
-        }, ...prev].slice(0, 50));
-      })
-      .subscribe();
-
-    return () => { supabase.removeChannel(channel); };
-  }, []);
 
   const login = useCallback((username, password) => {
     const user = USERS.find(u => u.username === username && u.password === password);
@@ -127,23 +89,18 @@ export function AppProvider({ children }) {
 
   const sendGif = useCallback((targetPlayer, type, gifUrl) => {
     if (!auth) return;
-    supabase.from("bucks_gif_log").insert({
-      sender: auth.displayName || auth.username,
-      sender_emoji: auth.emoji || "👤",
-      target: targetPlayer,
-      type,
-      gif_url: gifUrl,
-    });
-    // Optimistic local update so sender sees it immediately
-    setGifLog(prev => [{
-      id: Date.now() + Math.random(),
-      sender: auth.displayName || auth.username,
-      senderEmoji: auth.emoji || "👤",
-      target: targetPlayer,
-      type,
-      gifUrl,
-      timestamp: new Date().toISOString(),
-    }, ...prev].slice(0, 50));
+    setGifLog(prev => [
+      ...prev,
+      {
+        id: Date.now() + Math.random(),
+        sender: auth.displayName || auth.username,
+        senderEmoji: auth.emoji || "👤",
+        target: targetPlayer,
+        type,
+        gifUrl,
+        timestamp: new Date().toISOString(),
+      },
+    ]);
   }, [auth]);
 
   const setActiveActivity = useCallback((activityId) => {
@@ -157,7 +114,6 @@ export function AppProvider({ children }) {
   const resetReactions = useCallback(() => {
     setReactionLog([]);
     setGifLog([]);
-    supabase.from("bucks_gif_log").delete().neq("id", "00000000-0000-0000-0000-000000000000");
   }, []);
 
   const resetAll = useCallback(() => {
@@ -167,7 +123,6 @@ export function AppProvider({ children }) {
     setGroups([]);
     setDaySetup({ complete: false, attendeeNames: [] });
     setActiveActivityState("burgers");
-    supabase.from("bucks_gif_log").delete().neq("id", "00000000-0000-0000-0000-000000000000");
   }, []);
 
   // Compute leaderboard

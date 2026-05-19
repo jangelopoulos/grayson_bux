@@ -14,7 +14,7 @@ function formatTime(iso) {
 export default function Feed() {
   const { gifLog } = useApp();
 
-  const sorted = gifLog;
+  const sorted = [...gifLog].reverse();
 
   return (
     <div className="page fade-up">
